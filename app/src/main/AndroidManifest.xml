@@ -8,12 +8,50 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActividadPrincipal">
+
+        <activity
+            android:name=".MenuActividad"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ActividadPrincipal"
+            android:label="@string/app_name"
+            android:parentActivityName=".MenuActividad">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActividad" />
+        </activity>
+
+        <activity
+            android:name=".Presentacion"
+            android:label="@string/app_name"
+            android:parentActivityName=".MenuActividad">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActividad" />
+        </activity>
+
+        <activity
+            android:name=".Resultados"
+            android:label="@string/app_name"
+            android:parentActivityName=".MenuActividad">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActividad" />
+        </activity>
+
+        <activity
+            android:name=".Despedida"
+            android:label="@string/app_name"
+            android:parentActivityName=".MenuActividad">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActividad" />
         </activity>
     </application>
 

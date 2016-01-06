@@ -1,7 +1,13 @@
 package com.germaaan.seriator;
 
-/**
- * Created by germaaan on 6/01/16.
- */
-public class MenuActividad {
+import android.app.Activity;
+import android.os.Bundle;
+
+public class MenuActividad extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.actividad_menu);
+    }
 }
