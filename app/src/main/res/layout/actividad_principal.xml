@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textoPregunta"
+                android:id="@+id/pregunta"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -48,7 +48,7 @@
             android:rowCount="3">
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/btn_option_1"
+                android:id="@+id/btn_opcion_1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
@@ -63,7 +63,7 @@
                 android:visibility="visible" />
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/btn_option_2"
+                android:id="@+id/btn_opcion_2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
@@ -78,7 +78,7 @@
                 android:visibility="visible" />
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/btn_option_3"
+                android:id="@+id/btn_opcion_3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
@@ -93,7 +93,7 @@
                 android:visibility="visible" />
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/btn_option_4"
+                android:id="@+id/btn_opcion_4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
