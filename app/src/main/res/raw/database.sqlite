@@ -1,17 +1,17 @@
-CREATE TABLE 'preguntas' (
+CREATE TABLE `preguntas` (
     _id INTEGER AUTO INCREMENT PRIMARY KEY,
-    'pregunta' VARCHAR(256),
-    'respuesta_correcta' VARCHAR(32) NOT NULL,
-    'respuesta_incorrecta_1' VARCHAR(32) NOT NULL,
-    'respuesta_incorrecta_2' VARCHAR(32) NOT NULL,
-    'respuesta_incorrecta_3' VARCHAR(32) NOT NULL,
-    'respuesta_incorrecta_4' VARCHAR(32) DEFAULT NULL,
-    'respuesta_incorrecta_5' VARCHAR(32) DEFAULT NULL,
-    'respuesta_incorrecta_6' VARCHAR(32) DEFAULT NULL,
-    'respuesta_incorrecta_7' VARCHAR(32) DEFAULT NULL,
-    'dificultad' CHARACTER NOT NULL DEFAULT ’e’,
-    'categoria' CHARACTER NOT NULL DEFAULT ’Z’,
-    'pregunta_tipo' VARCHAR(32) NOT NULL
+    `pregunta` VARCHAR(256),
+    `respuesta_correcta` VARCHAR(32) NOT NULL,
+    `respuesta_incorrecta_1` VARCHAR(32) NOT NULL,
+    `respuesta_incorrecta_2` VARCHAR(32) NOT NULL,
+    `respuesta_incorrecta_3` VARCHAR(32) NOT NULL,
+    `respuesta_incorrecta_4` VARCHAR(32) DEFAULT NULL,
+    `respuesta_incorrecta_5` VARCHAR(32) DEFAULT NULL,
+    `respuesta_incorrecta_6` VARCHAR(32) DEFAULT NULL,
+    `respuesta_incorrecta_7` VARCHAR(32) DEFAULT NULL,
+    `dificultad` CHARACTER NOT NULL DEFAULT 'e',
+    `categoria` CHARACTER NOT NULL DEFAULT 'Z',
+    `pregunta_tipo` VARCHAR(32) NOT NULL,
 );
 
 -- historia - A
@@ -24,10 +24,19 @@ CREATE TABLE 'preguntas' (
 -- astronomia - H
 -- otras - Z
 
--- incluir algunas preguntas para depuracion
-INSERT INTO 'preguntas' ('pregunta', 'respuesta_correcta', 'respuesta_incorrecta_1', 'respuesta_incorrecta_2',
-    'respuesta_incorrecta_3', 'categoria', 'pregunta_tipo')
-    VALUES("El agua es esencial para la vida: en que porcentaje forma parte del peso total
-        del cuerpo humano?", "60-80%", "10-30%", "40-50%", "90-110%", ’G’, ’0’);
+-- Incluir algunas preguntas para depuracion
+INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `categoria`, `pregunta_tipo`)
+VALUES("El agua es esencial para la vida: en que porcentaje forma parte del peso total del cuerpo humano?", "60-80%", "10-30%", "40-50%", "90-110%", 'G', '0');
 
- --resto de preguntas
+ -- Resto de preguntas
+INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `categoria`, `pregunta_tipo`)
+VALUES("Pregunta prueba 1", "1", "2", "3", "4", 'G', '0');
+
+INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `categoria`, `pregunta_tipo`)
+VALUES("Pregunta prueba 2", "5", "6", "7", "8", 'G', '0');
+
+INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `categoria`, `pregunta_tipo`)
+VALUES("Pregunta prueba 3", "9", "10", "11", "12", 'G', '0');
+
+INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `categoria`, `pregunta_tipo`)
+VALUES("Pregunta prueba 4", "13", "14", "15", "16", 'G', '0');

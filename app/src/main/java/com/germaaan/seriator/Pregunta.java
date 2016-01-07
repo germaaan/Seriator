@@ -1,90 +1,51 @@
 package com.germaaan.seriator;
 
+import java.util.Random;
+
 public class Pregunta {
+    private static Random random = new Random();
+
     private String pregunta;
-    private String respuestaCorrecta;
-    private String respuestaIncorrecta1;
-    private String respuestaIncorrecta2;
-    private String respuestaIncorrecta3;
-    private char dificultad;
-    private char categoria;
-    private String tipo;
+    private String respuesta;
+    private String[] respuestas_incorrectas;
+    private String[] respuestas = new String[4];
 
-    public Pregunta() {
-        pregunta = "";
-        respuestaCorrecta = "";
-        respuestaIncorrecta1 = "";
-        respuestaIncorrecta2 = "";
-        respuestaIncorrecta3 = "";
-        dificultad = '0';
-        categoria = 'Z';
-    }
-
-    public Pregunta(String pregunta, String respuestaCorrecta, String respuestaIncorrecta1,
-                    String respuestaIncorrecta2, String respuestaIncorrecta3, char dificultad,
-                    char categoria) {
+    public Pregunta(String pregunta, String respuesta, String[] respuestas_incorrectas) {
         this.pregunta = pregunta;
-        this.respuestaCorrecta = respuestaCorrecta;
-        this.respuestaIncorrecta1 = respuestaIncorrecta1;
-        this.respuestaIncorrecta2 = respuestaIncorrecta2;
-        this.respuestaIncorrecta3 = respuestaIncorrecta3;
-        this.dificultad = dificultad;
-        this.categoria = categoria;
+        this.respuesta = respuesta;
+        this.respuestas_incorrectas = respuestas_incorrectas;
+
+        this.respuestas[0] = respuesta;
+        this.respuestas[1] = respuestas_incorrectas[0];
+        this.respuestas[2] = respuestas_incorrectas[1];
+        this.respuestas[3] = respuestas_incorrectas[2];
+
+        Pregunta.mezclarRespuestas(this.respuestas);
     }
 
     public String getPregunta() {
         return this.pregunta;
     }
 
-    public String getRespuestaCorrecta() {
-        return this.respuestaCorrecta;
+    public String[] getRespuestasIncorrectas() {
+        return this.respuestas_incorrectas;
     }
 
-    public String getRespuestaIncorrecta1() {
-        return this.respuestaIncorrecta1;
+    public String getRespuesta() {
+        return this.respuesta;
     }
 
-    public String getRespuestaIncorrecta2() {
-        return this.respuestaIncorrecta2;
+    public String[] getRespuestas() {
+        return this.respuestas;
     }
 
-    public String getRespuestaIncorrecta3() {
-        return this.respuestaIncorrecta3;
-    }
+    private static void mezclarRespuestas(String[] respuestas) {
+        for (int i = respuestas.length - 1; i >= 0; i--) {
+            int index = Pregunta.random.nextInt(i + 1);
 
-    public char getDificultad() {
-        return this.dificultad;
-    }
-
-    public char getCategoria() {
-        return this.categoria;
-    }
-
-    public void setPregunta(String pregunta) {
-        this.pregunta = pregunta;
-    }
-
-    public void setRespuestaCorrecta(String respuestaCorrecta) {
-        this.respuestaCorrecta = respuestaCorrecta;
-    }
-
-    public void setRespuestaIncorrecta1(String respuestaIncorrecta1) {
-        this.respuestaIncorrecta1 = respuestaIncorrecta1;
-    }
-
-    public void setRespuestaIncorrecta2(String respuestaIncorrecta2) {
-        this.respuestaIncorrecta2 = respuestaIncorrecta2;
-    }
-
-    public void setRespuestaIncorrecta3(String respuestaIncorrecta3) {
-        this.respuestaIncorrecta3 = respuestaIncorrecta3;
-    }
-
-    public void setDificultad(char dificultad) {
-        this.dificultad = dificultad;
-    }
-
-    public void setCategoria(char categoria) {
-        this.categoria = categoria;
+            String a = respuestas[index];
+            respuestas[index] = respuestas[i];
+            respuestas[i] = a;
+        }
     }
 }
