@@ -63,14 +63,13 @@
             android:rowCount="3">
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/botonPlay"
+                android:id="@+id/btn_play"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:background="#ff0000"
-                android:onClick=""
                 android:text="@string/play"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
@@ -79,14 +78,13 @@
                 android:visibility="visible" />
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/botonStats"
+                android:id="@+id/btn_stats"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:background="#00ff00"
-                android:onClick=""
                 android:text="@string/stats"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
@@ -95,13 +93,12 @@
                 android:visibility="visible" />
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/botonSettings"
+                android:id="@+id/btn_settings"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:background="#0000ff"
-                android:onClick=""
                 android:text="@string/settings"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
