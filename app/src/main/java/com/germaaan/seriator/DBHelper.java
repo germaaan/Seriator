@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-
 public class DBHelper extends SQLiteOpenHelper {
     public static final String NOMBRE_BD = "Juego-preguntasDB";
     public static final int VERSION_ACTUAL_BD = 2;

@@ -11,7 +11,7 @@ CREATE TABLE `preguntas` (
     `respuesta_incorrecta_7` VARCHAR(32) DEFAULT NULL,
     `dificultad` CHARACTER NOT NULL DEFAULT 'e',
     `categoria` CHARACTER NOT NULL DEFAULT 'Z',
-    `pregunta_tipo` VARCHAR(32) NOT NULL,
+    `pregunta_tipo` VARCHAR(32) NOT NULL
 );
 
 -- historia - A
