@@ -3,6 +3,7 @@ package com.germaaan.seriator;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,11 +41,13 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         this.opcion_4 = (Button) this.findViewById(R.id.btn_opcion_4);
 
         this.db = new DBPref(this);
-        Cursor preguntas = this.db.getPreguntas(DBPref.Categoria.HISTORIA, DBPref.Dificultad.FACIL, ActividadPrincipal.NUM_PREGUNTAS);
+        Cursor preguntas = this.db.getPreguntas(DBPref.Categoria.SERIES, DBPref.Dificultad.FACIL, ActividadPrincipal.NUM_PREGUNTAS);
 
         if (preguntas.moveToFirst()) {
+
             do {
                 String pregunta = preguntas.getString(preguntas.getColumnIndex("pregunta"));
+
                 String respuesta = preguntas.getString(preguntas.getColumnIndex("respuesta_correcta"));
                 Queue<String> incorrectas = new LinkedList<String>();
 
@@ -94,13 +97,9 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
             if (this.listaPreguntas.size() > 0) {
                 this.setPregunta(this.listaPreguntas.poll());
             } else {
-                Toast t = Toast.makeText(this, "Has ganado!", Toast.LENGTH_LONG);
-                t.show();
                 this.finish();
             }
         } else {
-            Toast t = Toast.makeText(this, "Has perdido!", Toast.LENGTH_LONG);
-            t.show();
             this.finish();
         }
     }

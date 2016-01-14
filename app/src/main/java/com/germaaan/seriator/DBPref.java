@@ -6,10 +6,7 @@ import android.database.Cursor;
 
 public class DBPref extends DBHelper {
     public static enum Categoria {
-        HISTORIA('A'),
-        //...
-        TECNOLOGÍA('G'),
-        OTROS('Z');
+        SERIES('S');
 
         public final char C;
 
@@ -19,9 +16,9 @@ public class DBPref extends DBHelper {
     }
 
     public static enum Dificultad {
-        FACIL('e'),
-        MEDIA('m'),
-        DIFICIL('h');
+        FACIL('F'),
+        MEDIA('M'),
+        DIFICIL('D');
 
         public final char D;
 

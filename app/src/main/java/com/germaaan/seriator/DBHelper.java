@@ -1,6 +1,7 @@
 package com.germaaan.seriator;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -36,6 +37,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 sb.delete(0, sb.capacity());
             }
         }
+
+        String countQuery = "SELECT * FROM preguntas";
+        Cursor cursor = sqLiteDatabase.rawQuery(countQuery, null);
+        int cnt = cursor.getCount();
+        cursor.close();
+        Log.d("debug", "Numero" + cnt);
     }
 
     @Override
