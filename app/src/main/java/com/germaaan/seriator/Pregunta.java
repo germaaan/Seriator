@@ -9,12 +9,14 @@ public class Pregunta {
     private static Random random = new Random();
 
     private String pregunta;
+    private int tipoPregunta;
     private String respuesta;
     private ArrayList<String> respuestasIncorrectas;
     private ArrayList<String> respuestas;
 
-    public Pregunta(String pregunta, String respuesta, ArrayList<String> respuestasIncorrectas) {
+    public Pregunta(String pregunta, int tipoPregunta, String respuesta, ArrayList<String> respuestasIncorrectas) {
         this.pregunta = pregunta;
+        this.tipoPregunta = tipoPregunta;
         this.respuesta = respuesta;
         this.respuestasIncorrectas = new ArrayList<String>(respuestasIncorrectas);
         this.respuestas = new ArrayList();
@@ -36,8 +38,8 @@ public class Pregunta {
         return this.pregunta;
     }
 
-    public ArrayList<String> getRespuestasIncorrectas() {
-        return this.respuestasIncorrectas;
+    public int getTipoPregunta() {
+        return this.tipoPregunta;
     }
 
     public String getRespuesta() {

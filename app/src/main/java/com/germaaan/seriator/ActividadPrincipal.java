@@ -2,6 +2,7 @@ package com.germaaan.seriator;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +47,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
             do {
                 String pregunta = preguntas.getString(preguntas.getColumnIndex("pregunta"));
+                int tipoPregunta = preguntas.getInt(preguntas.getColumnIndex("tipoPregunta"));
 
                 String respuestaCorrecta = preguntas.getString(preguntas.getColumnIndex("respuestaCorrecta"));
                 ArrayList<String> respuestasIncorrectas = new ArrayList();
@@ -54,13 +56,13 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 respuestasIncorrectas.add(preguntas.getString(preguntas.getColumnIndex("respuestaIncorrecta2")));
                 respuestasIncorrectas.add(preguntas.getString(preguntas.getColumnIndex("respuestaIncorrecta3")));
 
-                this.listaPreguntas.push(new Pregunta(pregunta, respuestaCorrecta, respuestasIncorrectas));
+                this.listaPreguntas.push(new Pregunta(pregunta, tipoPregunta, respuestaCorrecta, respuestasIncorrectas));
             } while (preguntas.moveToNext());
         }
 
         this.manejadorBaseDatos.close();
 
-        this.setCampoPregunta((Pregunta) this.listaPreguntas.pop());
+        this.setPregunta((Pregunta) this.listaPreguntas.pop());
 
         this.opcion1.setOnClickListener(this);
         this.opcion2.setOnClickListener(this);
@@ -68,7 +70,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         this.opcion4.setOnClickListener(this);
     }
 
-    private void setCampoPregunta(Pregunta pregunta) {
+    private void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
 
         ArrayList<String> respuestas = new ArrayList<String>(pregunta.getRespuestas());
@@ -79,6 +81,18 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         this.opcion2.setText(respuestas.get(1));
         this.opcion3.setText(respuestas.get(2));
         this.opcion4.setText(respuestas.get(3));
+
+        if (this.pregunta.getTipoPregunta() == 3) {
+            this.opcion1.setTextSize(0);
+            this.opcion2.setTextSize(0);
+            this.opcion3.setTextSize(0);
+            this.opcion4.setTextSize(0);
+
+            this.opcion1.setBackgroundResource(getResources().getIdentifier(respuestas.get(0), "drawable", getPackageName()));
+            this.opcion2.setBackgroundResource(getResources().getIdentifier(respuestas.get(1), "drawable", getPackageName()));
+            this.opcion3.setBackgroundResource(getResources().getIdentifier(respuestas.get(2), "drawable", getPackageName()));
+            this.opcion4.setBackgroundResource(getResources().getIdentifier(respuestas.get(3), "drawable", getPackageName()));
+        }
     }
 
     @Override
@@ -89,7 +103,17 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
             Iterator itr = this.listaPreguntas.iterator();
 
             if (itr.hasNext()) {
-                this.setCampoPregunta((Pregunta) this.listaPreguntas.pop());
+                this.opcion1.setTextSize(20);
+                this.opcion2.setTextSize(20);
+                this.opcion3.setTextSize(20);
+                this.opcion4.setTextSize(20);
+
+                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
+
+                this.setPregunta((Pregunta) this.listaPreguntas.pop());
             } else {
                 Toast.makeText(this, "HAS GANADO!", Toast.LENGTH_LONG).show();
                 this.finish();

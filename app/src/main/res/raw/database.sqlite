@@ -11,22 +11,28 @@ CREATE TABLE `preguntas` (
     `respuestaIncorrecta7` VARCHAR(32) DEFAULT NULL,
     `dificultad` CHARACTER NOT NULL DEFAULT 'F',
     `categoria` CHARACTER NOT NULL DEFAULT 'S',
-    `tipoPregunta` VARCHAR(32) NOT NULL
+    `tipoPregunta` INTEGER NOT NULL
 );
+
+-- tipoPregunta
+-- 1: texto
+-- 2: imagen completa
+-- 3: imagen botones
+-- 4: sonido
 
 -- Incluir algunas preguntas para depuracion
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("El agua es esencial para la vida: en que porcentaje forma parte del peso total del cuerpo humano?", "60-80%", "10-30%", "40-50%", "90-110%", 'F', 'S', '0');
+VALUES("El agua es esencial para la vida: en que porcentaje forma parte del peso total del cuerpo humano?", "60-80%", "10-30%", "40-50%", "90-110%", 'F', 'S', 1);
 
  -- Resto de preguntas
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("Pregunta prueba 1", "1", "2", "3", "4", 'F', 'S', '0');
+VALUES("Pregunta prueba 1", "1", "2", "3", "4", 'F', 'S', 1);
 
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("Pregunta prueba 2", "5", "6", "7", "8", 'F', 'S', '0');
+VALUES("¿Cuál de estos peces aparece en Los Simpsons?", "blinky", "nemo", "pez_1", "pez_2", 'F', 'S', 3);
 
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("Pregunta prueba 3", "9", "10", "11", "12", 'F', 'S', '0');
+VALUES("Pregunta prueba 3", "3", "10", "11", "12", 'F', 'S', 1);
 
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("Pregunta prueba 4", "13", "14", "15", "16", 'F', 'S', '0');
+VALUES("Pregunta prueba 4", "4", "14", "15", "16", 'F', 'S', 1);
