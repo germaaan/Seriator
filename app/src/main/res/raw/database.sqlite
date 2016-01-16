@@ -1,32 +1,32 @@
 CREATE TABLE `preguntas` (
     _id INTEGER AUTO INCREMENT PRIMARY KEY,
     `pregunta` VARCHAR(256),
-    `respuesta_correcta` VARCHAR(32) NOT NULL,
-    `respuesta_incorrecta_1` VARCHAR(32) NOT NULL,
-    `respuesta_incorrecta_2` VARCHAR(32) NOT NULL,
-    `respuesta_incorrecta_3` VARCHAR(32) NOT NULL,
-    `respuesta_incorrecta_4` VARCHAR(32) DEFAULT NULL,
-    `respuesta_incorrecta_5` VARCHAR(32) DEFAULT NULL,
-    `respuesta_incorrecta_6` VARCHAR(32) DEFAULT NULL,
-    `respuesta_incorrecta_7` VARCHAR(32) DEFAULT NULL,
+    `respuestaCorrecta` VARCHAR(32) NOT NULL,
+    `respuestaIncorrecta1` VARCHAR(32) NOT NULL,
+    `respuestaIncorrecta2` VARCHAR(32) NOT NULL,
+    `respuestaIncorrecta3` VARCHAR(32) NOT NULL,
+    `respuestaIncorrecta4` VARCHAR(32) DEFAULT NULL,
+    `respuestaIncorrecta5` VARCHAR(32) DEFAULT NULL,
+    `respuestaIncorrecta6` VARCHAR(32) DEFAULT NULL,
+    `respuestaIncorrecta7` VARCHAR(32) DEFAULT NULL,
     `dificultad` CHARACTER NOT NULL DEFAULT 'F',
     `categoria` CHARACTER NOT NULL DEFAULT 'S',
-    `pregunta_tipo` VARCHAR(32) NOT NULL
+    `tipoPregunta` VARCHAR(32) NOT NULL
 );
 
 -- Incluir algunas preguntas para depuracion
-INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `dificultad`, `categoria`, `pregunta_tipo`)
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
 VALUES("El agua es esencial para la vida: en que porcentaje forma parte del peso total del cuerpo humano?", "60-80%", "10-30%", "40-50%", "90-110%", 'F', 'S', '0');
 
  -- Resto de preguntas
-INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `dificultad`, `categoria`, `pregunta_tipo`)
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
 VALUES("Pregunta prueba 1", "1", "2", "3", "4", 'F', 'S', '0');
 
-INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `dificultad`, `categoria`, `pregunta_tipo`)
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
 VALUES("Pregunta prueba 2", "5", "6", "7", "8", 'F', 'S', '0');
 
-INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `dificultad`, `categoria`, `pregunta_tipo`)
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
 VALUES("Pregunta prueba 3", "9", "10", "11", "12", 'F', 'S', '0');
 
-INSERT INTO `preguntas` (`pregunta`, `respuesta_correcta`, `respuesta_incorrecta_1`, `respuesta_incorrecta_2`, `respuesta_incorrecta_3`, `dificultad`, `categoria`, `pregunta_tipo`)
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
 VALUES("Pregunta prueba 4", "13", "14", "15", "16", 'F', 'S', '0');

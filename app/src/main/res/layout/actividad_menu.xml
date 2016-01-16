@@ -63,7 +63,7 @@
             android:rowCount="3">
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/btn_play"
+                android:id="@+id/boton_jugar"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
@@ -78,7 +78,7 @@
                 android:visibility="visible" />
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/btn_stats"
+                android:id="@+id/boton_resultados"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
@@ -93,7 +93,7 @@
                 android:visibility="visible" />
 
             <Button xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/btn_settings"
+                android:id="@+id/boton_otro_juego"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"

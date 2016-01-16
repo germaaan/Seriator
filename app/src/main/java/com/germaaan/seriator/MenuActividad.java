@@ -8,31 +8,31 @@ import android.widget.Button;
 
 public class MenuActividad extends Activity implements View.OnClickListener {
 
-    private Button botonPlay;
-    private Button botonStats;
-    private Button botonSettings;
+    private Button botonJugar;
+    private Button botonResultados;
+    private Button botonOtroJuego;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_menu);
 
-        this.botonPlay = (Button) this.findViewById(R.id.btn_play);
-        this.botonStats = (Button) this.findViewById(R.id.btn_stats);
-        this.botonSettings = (Button) this.findViewById(R.id.btn_settings);
+        this.botonJugar = (Button) this.findViewById(R.id.boton_jugar);
+        this.botonResultados = (Button) this.findViewById(R.id.boton_resultados);
+        this.botonOtroJuego = (Button) this.findViewById(R.id.boton_otro_juego);
 
-        this.botonPlay.setOnClickListener(this);
-        this.botonStats.setOnClickListener(this);
-        this.botonSettings.setOnClickListener(this);
+        this.botonJugar.setOnClickListener(this);
+        this.botonResultados.setOnClickListener(this);
+        this.botonOtroJuego.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.btn_play) {
+        if (view.getId() == R.id.boton_jugar) {
             this.startActivity(new Intent(MenuActividad.this, ActividadPrincipal.class));
-        } else if (view.getId() == R.id.btn_stats) {
+        } else if (view.getId() == R.id.boton_resultados) {
             this.startActivity(new Intent(MenuActividad.this, Resultados.class));
-        } else if (view.getId() == R.id.btn_settings) {
+        } else if (view.getId() == R.id.boton_otro_juego) {
             this.startActivity(new Intent(MenuActividad.this, Despedida.class));
         }
     }
