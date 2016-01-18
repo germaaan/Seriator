@@ -3,20 +3,19 @@ package com.germaaan.seriator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.Random;
 
 public class Pregunta {
-    private static Random random = new Random();
-
     private String pregunta;
-    private int tipoPregunta;
+    private int tipo;
+    private String imagen;
     private String respuesta;
     private ArrayList<String> respuestasIncorrectas;
     private ArrayList<String> respuestas;
 
-    public Pregunta(String pregunta, int tipoPregunta, String respuesta, ArrayList<String> respuestasIncorrectas) {
+    public Pregunta(String pregunta, int tipo, String imagen, String respuesta, ArrayList<String> respuestasIncorrectas) {
         this.pregunta = pregunta;
-        this.tipoPregunta = tipoPregunta;
+        this.tipo = tipo;
+        this.imagen = imagen;
         this.respuesta = respuesta;
         this.respuestasIncorrectas = new ArrayList<String>(respuestasIncorrectas);
         this.respuestas = new ArrayList();
@@ -38,8 +37,12 @@ public class Pregunta {
         return this.pregunta;
     }
 
-    public int getTipoPregunta() {
-        return this.tipoPregunta;
+    public int getTipo() {
+        return this.tipo;
+    }
+
+    public String getImagen() {
+        return this.imagen;
     }
 
     public String getRespuesta() {

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
     private Pregunta pregunta;
 
     private TextView campoPregunta;
+    private ImageView imagen;
     private Button opcion1;
     private Button opcion2;
     private Button opcion3;
@@ -35,6 +37,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         setContentView(R.layout.actividad_principal);
 
         this.campoPregunta = (TextView) this.findViewById(R.id.campo_pregunta);
+        this.imagen = (ImageView) this.findViewById(R.id.imagen_pregunta);
         this.opcion1 = (Button) this.findViewById(R.id.boton_opcion_1);
         this.opcion2 = (Button) this.findViewById(R.id.boton_opcion_2);
         this.opcion3 = (Button) this.findViewById(R.id.boton_opcion_3);
@@ -47,7 +50,8 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
             do {
                 String pregunta = preguntas.getString(preguntas.getColumnIndex("pregunta"));
-                int tipoPregunta = preguntas.getInt(preguntas.getColumnIndex("tipoPregunta"));
+                int tipo = preguntas.getInt(preguntas.getColumnIndex("tipo"));
+                String imagen = preguntas.getString(preguntas.getColumnIndex("imagen"));
 
                 String respuestaCorrecta = preguntas.getString(preguntas.getColumnIndex("respuestaCorrecta"));
                 ArrayList<String> respuestasIncorrectas = new ArrayList();
@@ -56,7 +60,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 respuestasIncorrectas.add(preguntas.getString(preguntas.getColumnIndex("respuestaIncorrecta2")));
                 respuestasIncorrectas.add(preguntas.getString(preguntas.getColumnIndex("respuestaIncorrecta3")));
 
-                this.listaPreguntas.push(new Pregunta(pregunta, tipoPregunta, respuestaCorrecta, respuestasIncorrectas));
+                this.listaPreguntas.push(new Pregunta(pregunta, tipo, imagen, respuestaCorrecta, respuestasIncorrectas));
             } while (preguntas.moveToNext());
         }
 
@@ -82,16 +86,49 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         this.opcion3.setText(respuestas.get(2));
         this.opcion4.setText(respuestas.get(3));
 
-        if (this.pregunta.getTipoPregunta() == 3) {
-            this.opcion1.setTextSize(0);
-            this.opcion2.setTextSize(0);
-            this.opcion3.setTextSize(0);
-            this.opcion4.setTextSize(0);
+        switch (this.pregunta.getTipo()) {
+            case 2:
+                this.imagen.getLayoutParams().height = 300;
+                this.imagen.setBackgroundResource(getResources().getIdentifier(this.pregunta.getImagen(), "drawable", getPackageName()));
 
-            this.opcion1.setBackgroundResource(getResources().getIdentifier(respuestas.get(0), "drawable", getPackageName()));
-            this.opcion2.setBackgroundResource(getResources().getIdentifier(respuestas.get(1), "drawable", getPackageName()));
-            this.opcion3.setBackgroundResource(getResources().getIdentifier(respuestas.get(2), "drawable", getPackageName()));
-            this.opcion4.setBackgroundResource(getResources().getIdentifier(respuestas.get(3), "drawable", getPackageName()));
+                this.opcion1.setTextSize(20);
+                this.opcion2.setTextSize(20);
+                this.opcion3.setTextSize(20);
+                this.opcion4.setTextSize(20);
+
+                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
+
+                break;
+            case 3:
+                this.imagen.getLayoutParams().height = 1;
+                this.imagen.setBackgroundResource(0);
+
+                this.opcion1.setTextSize(0);
+                this.opcion2.setTextSize(0);
+                this.opcion3.setTextSize(0);
+                this.opcion4.setTextSize(0);
+
+                this.opcion1.setBackgroundResource(getResources().getIdentifier(respuestas.get(0), "drawable", getPackageName()));
+                this.opcion2.setBackgroundResource(getResources().getIdentifier(respuestas.get(1), "drawable", getPackageName()));
+                this.opcion3.setBackgroundResource(getResources().getIdentifier(respuestas.get(2), "drawable", getPackageName()));
+                this.opcion4.setBackgroundResource(getResources().getIdentifier(respuestas.get(3), "drawable", getPackageName()));
+                break;
+            default:
+                this.imagen.getLayoutParams().height = 1;
+                this.imagen.setBackgroundResource(0);
+
+                this.opcion1.setTextSize(20);
+                this.opcion2.setTextSize(20);
+                this.opcion3.setTextSize(20);
+                this.opcion4.setTextSize(20);
+
+                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
         }
     }
 
@@ -103,16 +140,6 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
             Iterator itr = this.listaPreguntas.iterator();
 
             if (itr.hasNext()) {
-                this.opcion1.setTextSize(20);
-                this.opcion2.setTextSize(20);
-                this.opcion3.setTextSize(20);
-                this.opcion4.setTextSize(20);
-
-                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
-
                 this.setPregunta((Pregunta) this.listaPreguntas.pop());
             } else {
                 Toast.makeText(this, "HAS GANADO!", Toast.LENGTH_LONG).show();

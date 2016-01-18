@@ -5,34 +5,29 @@ CREATE TABLE `preguntas` (
     `respuestaIncorrecta1` VARCHAR(32) NOT NULL,
     `respuestaIncorrecta2` VARCHAR(32) NOT NULL,
     `respuestaIncorrecta3` VARCHAR(32) NOT NULL,
-    `respuestaIncorrecta4` VARCHAR(32) DEFAULT NULL,
-    `respuestaIncorrecta5` VARCHAR(32) DEFAULT NULL,
-    `respuestaIncorrecta6` VARCHAR(32) DEFAULT NULL,
-    `respuestaIncorrecta7` VARCHAR(32) DEFAULT NULL,
     `dificultad` CHARACTER NOT NULL DEFAULT 'F',
     `categoria` CHARACTER NOT NULL DEFAULT 'S',
-    `tipoPregunta` INTEGER NOT NULL
+    `imagen` VARCHAR(32) DEFAULT "NULL",
+    `tipo` INTEGER NOT NULL
 );
 
--- tipoPregunta
+-- tipo
 -- 1: texto
 -- 2: imagen completa
 -- 3: imagen botones
 -- 4: sonido
 
--- Incluir algunas preguntas para depuracion
-INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("El agua es esencial para la vida: en que porcentaje forma parte del peso total del cuerpo humano?", "60-80%", "10-30%", "40-50%", "90-110%", 'F', 'S', 1);
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("Di mi nombre.", "Heisenberg", "Walter White", "Rick", "Cartman", 1);
 
- -- Resto de preguntas
-INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("Pregunta prueba 1", "1", "2", "3", "4", 'F', 'S', 1);
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("Si no sabes que enfermedad tiene seguramente sea...", "Lupus", "Gripe", "Sarampión", "Botulismo", 1);
 
-INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("¿Cuál de estos peces aparece en Los Simpsons?", "blinky", "nemo", "pez_1", "pez_2", 'F', 'S', 3);
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("¿Cuál de estos peces aparece en Los Simpsons?", "blinky", "nemo", "pez_1", "pez_2", 3);
 
-INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("Pregunta prueba 3", "3", "10", "11", "12", 'F', 'S', 1);
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("¿Con quién no debes dar nunca un paseo por la bahía?", "Dexter Morgan", "Rick Grimes", "Emmett Brown", "Saul Goodman", 1);
 
-INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `dificultad`, `categoria`, `tipoPregunta`)
-VALUES("Pregunta prueba 4", "4", "14", "15", "16", 'F', 'S', 1);
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `imagen`, `tipo`)
+VALUES("¿A qué serie pertenece esta isla?", "Perdidos", "Breaking Bad", "Doctor Who", "The Walking Dead", "lost", 2);

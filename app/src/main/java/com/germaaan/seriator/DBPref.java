@@ -11,7 +11,7 @@ public class DBPref extends DBHelper {
     public Cursor getPreguntas(Categoria c, Dificultad d, int limit) {
         return this.baseDatos.rawQuery("SELECT `pregunta`, `respuestaCorrecta`, " +
                         "`respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, " +
-                        "`tipoPregunta` FROM `preguntas` WHERE categoria = ? AND dificultad = ? " +
+                        "`tipo`, `imagen` FROM `preguntas` WHERE categoria = ? AND dificultad = ? " +
                         "ORDER BY RANDOM() LIMIT ?",
                 new String[]{String.valueOf(c.C), String.valueOf(d.D), String.valueOf(limit)});
     }
