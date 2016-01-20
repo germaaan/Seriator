@@ -1,6 +1,8 @@
 package com.germaaan.seriator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -49,6 +51,8 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
         // Crear un método void initializeViews(); con todas estas sentencias
 
+        this.puntuacion = 0;
+
         this.preguntaInicial = (TextView) this.findViewById(R.id.pregunta_inicial);
         this.imagen = (ImageView) this.findViewById(R.id.imagen_pregunta);
         this.opcion1 = (Button) this.findViewById(R.id.boton_opcion_1);
@@ -56,14 +60,13 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         this.opcion3 = (Button) this.findViewById(R.id.boton_opcion_3);
         this.opcion4 = (Button) this.findViewById(R.id.boton_opcion_4);
 
-        botonesAudio = (LinearLayout) findViewById(R.id.layoutAudio);
+        this.botonesAudio = (LinearLayout) findViewById(R.id.layoutAudio);
 
         this.manejadorBaseDatos = new DBPref(this);
 
         this.sonidoAcierto = MediaPlayer.create(this, R.raw.sonido_acierto);
         this.sonidoError = MediaPlayer.create(this, R.raw.sonido_error);
         this.sonidoGanador = MediaPlayer.create(this, R.raw.sonido_ganador);
-//        this.sonido = MediaPlayer.create(this, R.raw.homer);
 
         Cursor preguntas = this.manejadorBaseDatos.getPreguntas(DBPref.Categoria.SERIES, DBPref.Dificultad.FACIL, ActividadPrincipal.NUM_PREGUNTAS);
 
@@ -183,6 +186,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         Button seleccionado = (Button) view;
 
         if (seleccionado.getText().toString().equals(this.pregunta.getRespuesta())) {
+            this.puntuacion++;
             Iterator itr = this.listaPreguntas.iterator();
 
             if (itr.hasNext()) {
@@ -190,13 +194,29 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 this.setPregunta((Pregunta) this.listaPreguntas.pop());
             } else {
                 this.sonidoGanador.start();
+                // En vez de has ganado pasa a la actividad Despedida
                 Toast.makeText(this, "HAS GANADO!", Toast.LENGTH_LONG).show();
                 this.finish();
             }
         } else {
             this.sonidoError.start();
-            Toast.makeText(this, "HAS PERDIDO!", Toast.LENGTH_LONG).show();
-            this.finish();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder
+                    .setMessage("Has fallado, si quieres volver a intentarlo te quitaré 2 aciertos.")
+                    .setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            puntuacion -= 2;
+                        }
+                    })
+                    .setNegativeButton("Reiniciar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    })
+                    .show();
         }
     }
 
