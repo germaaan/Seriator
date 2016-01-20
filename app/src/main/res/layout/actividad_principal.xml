@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ActividadPrincipal">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/layoutActividadPrincipal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/campo_pregunta"
+                android:id="@+id/pregunta_inicial"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -50,10 +50,36 @@
             <ImageView
                 android:id="@+id/imagen_pregunta"
                 android:layout_width="fill_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_height="150dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp" />
 
-            <Button xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
+                android:id="@+id/layoutAudio"
+                android:layout_width="fill_parent"
+                android:layout_height="64dp"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/boton_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:onClick="play"
+                    android:src="@drawable/play" />
+
+                <ImageButton
+                    android:id="@+id/boton_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:onClick="pause"
+                    android:src="@drawable/pause" />
+
+            </LinearLayout>
+
+            <Button
                 android:id="@+id/boton_opcion_1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -68,7 +94,7 @@
                 android:textStyle="bold"
                 android:visibility="visible" />
 
-            <Button xmlns:android="http://schemas.android.com/apk/res/android"
+            <Button
                 android:id="@+id/boton_opcion_2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +109,7 @@
                 android:textStyle="bold"
                 android:visibility="visible" />
 
-            <Button xmlns:android="http://schemas.android.com/apk/res/android"
+            <Button
                 android:id="@+id/boton_opcion_3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -98,7 +124,7 @@
                 android:textStyle="bold"
                 android:visibility="visible" />
 
-            <Button xmlns:android="http://schemas.android.com/apk/res/android"
+            <Button
                 android:id="@+id/boton_opcion_4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

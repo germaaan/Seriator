@@ -3,10 +3,12 @@ package com.germaaan.seriator;
 import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,26 +26,35 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
     private Stack listaPreguntas = new Stack();
     private Pregunta pregunta;
 
-    private TextView campoPregunta;
+    private TextView preguntaInicial;
     private ImageView imagen;
     private Button opcion1;
     private Button opcion2;
     private Button opcion3;
     private Button opcion4;
 
+    private LinearLayout botonesAudio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_principal);
 
-        this.campoPregunta = (TextView) this.findViewById(R.id.campo_pregunta);
+        this.preguntaInicial = (TextView) this.findViewById(R.id.pregunta_inicial);
         this.imagen = (ImageView) this.findViewById(R.id.imagen_pregunta);
         this.opcion1 = (Button) this.findViewById(R.id.boton_opcion_1);
         this.opcion2 = (Button) this.findViewById(R.id.boton_opcion_2);
         this.opcion3 = (Button) this.findViewById(R.id.boton_opcion_3);
         this.opcion4 = (Button) this.findViewById(R.id.boton_opcion_4);
 
+        botonesAudio = (LinearLayout) findViewById(R.id.layoutAudio);
+
+
         this.manejadorBaseDatos = new DBPref(this);
+
+        MediaPlayer sonidoAcierto = MediaPlayer.create(this, R.raw.sonido_acierto);
+        MediaPlayer sonidoError = MediaPlayer.create(this, R.raw.sonido_error);
+
         Cursor preguntas = this.manejadorBaseDatos.getPreguntas(DBPref.Categoria.SERIES, DBPref.Dificultad.FACIL, ActividadPrincipal.NUM_PREGUNTAS);
 
         if (preguntas.moveToFirst()) {
@@ -79,7 +90,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
         ArrayList<String> respuestas = new ArrayList<String>(pregunta.getRespuestas());
 
-        this.campoPregunta.setText(pregunta.getPregunta());
+        this.preguntaInicial.setText(pregunta.getPregunta());
 
         this.opcion1.setText(respuestas.get(0));
         this.opcion2.setText(respuestas.get(1));
@@ -88,8 +99,10 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
         switch (this.pregunta.getTipo()) {
             case 2:
-                this.imagen.getLayoutParams().height = 300;
+                this.imagen.setVisibility(View.VISIBLE);
                 this.imagen.setBackgroundResource(getResources().getIdentifier(this.pregunta.getImagen(), "drawable", getPackageName()));
+
+                this.botonesAudio.setVisibility(View.GONE);
 
                 this.opcion1.setTextSize(20);
                 this.opcion2.setTextSize(20);
@@ -103,8 +116,10 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
                 break;
             case 3:
-                this.imagen.getLayoutParams().height = 1;
+                this.imagen.setVisibility(View.GONE);
                 this.imagen.setBackgroundResource(0);
+
+                this.botonesAudio.setVisibility(View.VISIBLE);
 
                 this.opcion1.setTextSize(0);
                 this.opcion2.setTextSize(0);
@@ -117,8 +132,10 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 this.opcion4.setBackgroundResource(getResources().getIdentifier(respuestas.get(3), "drawable", getPackageName()));
                 break;
             default:
-                this.imagen.getLayoutParams().height = 1;
+                this.imagen.setVisibility(View.GONE);
                 this.imagen.setBackgroundResource(0);
+
+                this.botonesAudio.setVisibility(View.VISIBLE);
 
                 this.opcion1.setTextSize(20);
                 this.opcion2.setTextSize(20);
