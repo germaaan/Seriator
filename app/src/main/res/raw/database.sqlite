@@ -8,6 +8,7 @@ CREATE TABLE `preguntas` (
     `dificultad` CHARACTER NOT NULL DEFAULT 'F',
     `categoria` CHARACTER NOT NULL DEFAULT 'S',
     `imagen` VARCHAR(32) DEFAULT "NULL",
+    `sonido` VARCHAR(32) DEFAULT "NULL",
     `tipo` INTEGER NOT NULL
 );
 
@@ -31,3 +32,6 @@ VALUES("¿Con quién no debes dar nunca un paseo por la bahía?", "Dexter Morgan
 
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `imagen`, `tipo`)
 VALUES("¿A qué serie pertenece esta isla?", "Perdidos", "Breaking Bad", "Doctor Who", "The Walking Dead", "lost", 2);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `sonido`, `tipo`)
+VALUES("¿Quién se ha dado cuenta de que es lento?", "Homer Simpson", "Fry", "Bender", "Peter Griffin", "homer", 4);

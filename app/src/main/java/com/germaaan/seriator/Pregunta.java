@@ -8,14 +8,16 @@ public class Pregunta {
     private String pregunta;
     private int tipo;
     private String imagen;
+    private String sonido;
     private String respuesta;
     private ArrayList<String> respuestasIncorrectas;
     private ArrayList<String> respuestas;
 
-    public Pregunta(String pregunta, int tipo, String imagen, String respuesta, ArrayList<String> respuestasIncorrectas) {
+    public Pregunta(String pregunta, int tipo, String imagen, String sonido, String respuesta, ArrayList<String> respuestasIncorrectas) {
         this.pregunta = pregunta;
         this.tipo = tipo;
         this.imagen = imagen;
+        this.sonido = sonido;
         this.respuesta = respuesta;
         this.respuestasIncorrectas = new ArrayList<String>(respuestasIncorrectas);
         this.respuestas = new ArrayList();
@@ -43,6 +45,10 @@ public class Pregunta {
 
     public String getImagen() {
         return this.imagen;
+    }
+
+    public String getSonido() {
+        return this.sonido;
     }
 
     public String getRespuesta() {

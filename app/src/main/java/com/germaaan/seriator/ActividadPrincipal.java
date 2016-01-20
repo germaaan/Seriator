@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,10 +36,18 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
     private LinearLayout botonesAudio;
 
+    private MediaPlayer sonido;
+    private MediaPlayer sonidoAcierto;
+    private MediaPlayer sonidoError;
+    private MediaPlayer sonidoGanador;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_principal);
+
+
+        // Crear un método void initializeViews(); con todas estas sentencias
 
         this.preguntaInicial = (TextView) this.findViewById(R.id.pregunta_inicial);
         this.imagen = (ImageView) this.findViewById(R.id.imagen_pregunta);
@@ -49,11 +58,12 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
         botonesAudio = (LinearLayout) findViewById(R.id.layoutAudio);
 
-
         this.manejadorBaseDatos = new DBPref(this);
 
-        MediaPlayer sonidoAcierto = MediaPlayer.create(this, R.raw.sonido_acierto);
-        MediaPlayer sonidoError = MediaPlayer.create(this, R.raw.sonido_error);
+        this.sonidoAcierto = MediaPlayer.create(this, R.raw.sonido_acierto);
+        this.sonidoError = MediaPlayer.create(this, R.raw.sonido_error);
+        this.sonidoGanador = MediaPlayer.create(this, R.raw.sonido_ganador);
+//        this.sonido = MediaPlayer.create(this, R.raw.homer);
 
         Cursor preguntas = this.manejadorBaseDatos.getPreguntas(DBPref.Categoria.SERIES, DBPref.Dificultad.FACIL, ActividadPrincipal.NUM_PREGUNTAS);
 
@@ -63,6 +73,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 String pregunta = preguntas.getString(preguntas.getColumnIndex("pregunta"));
                 int tipo = preguntas.getInt(preguntas.getColumnIndex("tipo"));
                 String imagen = preguntas.getString(preguntas.getColumnIndex("imagen"));
+                String sonido = preguntas.getString(preguntas.getColumnIndex("sonido"));
 
                 String respuestaCorrecta = preguntas.getString(preguntas.getColumnIndex("respuestaCorrecta"));
                 ArrayList<String> respuestasIncorrectas = new ArrayList();
@@ -71,7 +82,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 respuestasIncorrectas.add(preguntas.getString(preguntas.getColumnIndex("respuestaIncorrecta2")));
                 respuestasIncorrectas.add(preguntas.getString(preguntas.getColumnIndex("respuestaIncorrecta3")));
 
-                this.listaPreguntas.push(new Pregunta(pregunta, tipo, imagen, respuestaCorrecta, respuestasIncorrectas));
+                this.listaPreguntas.push(new Pregunta(pregunta, tipo, imagen, sonido, respuestaCorrecta, respuestasIncorrectas));
             } while (preguntas.moveToNext());
         }
 
@@ -119,7 +130,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 this.imagen.setVisibility(View.GONE);
                 this.imagen.setBackgroundResource(0);
 
-                this.botonesAudio.setVisibility(View.VISIBLE);
+                this.botonesAudio.setVisibility(View.GONE);
 
                 this.opcion1.setTextSize(0);
                 this.opcion2.setTextSize(0);
@@ -131,11 +142,29 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 this.opcion3.setBackgroundResource(getResources().getIdentifier(respuestas.get(2), "drawable", getPackageName()));
                 this.opcion4.setBackgroundResource(getResources().getIdentifier(respuestas.get(3), "drawable", getPackageName()));
                 break;
-            default:
+            case 4:
                 this.imagen.setVisibility(View.GONE);
                 this.imagen.setBackgroundResource(0);
 
                 this.botonesAudio.setVisibility(View.VISIBLE);
+
+                this.sonido = MediaPlayer.create(this, Uri.parse("android.resource://com.germaaan.seriator/raw/" + this.pregunta.getSonido()));
+
+                this.opcion1.setTextSize(20);
+                this.opcion2.setTextSize(20);
+                this.opcion3.setTextSize(20);
+                this.opcion4.setTextSize(20);
+
+                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
+                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
+                break;
+            default:
+                this.imagen.setVisibility(View.GONE);
+                this.imagen.setBackgroundResource(0);
+
+                this.botonesAudio.setVisibility(View.GONE);
 
                 this.opcion1.setTextSize(20);
                 this.opcion2.setTextSize(20);
@@ -157,14 +186,26 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
             Iterator itr = this.listaPreguntas.iterator();
 
             if (itr.hasNext()) {
+                this.sonidoAcierto.start();
                 this.setPregunta((Pregunta) this.listaPreguntas.pop());
             } else {
+                this.sonidoGanador.start();
                 Toast.makeText(this, "HAS GANADO!", Toast.LENGTH_LONG).show();
                 this.finish();
             }
         } else {
+            this.sonidoError.start();
             Toast.makeText(this, "HAS PERDIDO!", Toast.LENGTH_LONG).show();
             this.finish();
         }
     }
+
+    public void play(View view) {
+        this.sonido.start();
+    }
+
+    public void pause(View view) {
+        this.sonido.pause();
+    }
+
 }
