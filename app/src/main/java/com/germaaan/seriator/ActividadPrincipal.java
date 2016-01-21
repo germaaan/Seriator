@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -187,6 +188,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
             Iterator itr = this.listaPreguntas.iterator();
 
             if (itr.hasNext()) {
+                Toast.makeText(this, "CORRECTO", Toast.LENGTH_SHORT).show();
                 this.sonidoAcierto.start();
                 this.setPregunta((Pregunta) this.listaPreguntas.pop());
             } else {
@@ -209,11 +211,16 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
                             mUtilidad.setPuntuacion(puntuacion);
+                            mostrarRespuesta();
                             finish();
                         }
                     })
                     .show();
         }
+    }
+
+    public void mostrarRespuesta() {
+        Toast.makeText(this, "La respuesta correcta era: " + this.pregunta.getRespuesta(), Toast.LENGTH_SHORT).show();
     }
 
     public void play(View view) {

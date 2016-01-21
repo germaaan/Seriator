@@ -33,7 +33,7 @@ public class MenuActividad extends Activity implements View.OnClickListener {
         } else if (view.getId() == R.id.boton_resultados) {
             this.startActivity(new Intent(MenuActividad.this, Resultados.class));
         } else if (view.getId() == R.id.boton_otro_juego) {
-            this.startActivity(new Intent(MenuActividad.this, Despedida.class));
+            this.startActivity(new Intent(MenuActividad.this, Presentacion.class));
         }
     }
 }

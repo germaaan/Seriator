@@ -3,13 +3,9 @@
     <string name="Version">Version 1.0 (c) German Martinez</string>
     <string name="app_name">Seriator</string>
     <string name="menu_inicial">Menu Inicial</string>
-    <string name="despedida">Vaya! Has acertado todas mis preguntas!</string>
-    <string name="despedida1">Bueno, has respondido bien: \n</string>
-    <string name="despedida2">¿Ya te vas? Bueno, al menos me has entretenido un poco.\n</string>
-    <string name="despedida3">Acuerdate de volver a visitarme\n</string>
-    <string name="play">Jugar</string>
-    <string name="stats">Resultados</string>
-    <string name="settings">Otros juegos</string>
-    <string name="welcome1">Hey, \n\tMi nombre es Tele (sí... ya sé... también tengo espejos en mi casa). \n\tMe aburro, así que como solo conozco series de ficción, vamos a jugar a un juego...</string>
-    <string name="tip" color="#F62217" textSize="33dp">Pista.</string>
+    <string name="jugar">Jugar</string>
+    <string name="resultados">Resultados</string>
+    <string name="otros_juegos">Otros juegos</string>
+    <string name="bienvenida">Hey, \n\tMi nombre es Tele (sí... ya sé... también tengo espejos en mi casa). \n\tMe aburro, así que como solo conozco series de ficción, vamos a jugar a un juego...</string>
+    <string name="invitacion">Hola soy Ploppy, ¿quieres probar otros juegos? \n\nQuizás esto te interese... ven conmigo!!!</string>
 </resources>
