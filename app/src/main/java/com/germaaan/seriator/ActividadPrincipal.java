@@ -21,7 +21,8 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class ActividadPrincipal extends Activity implements View.OnClickListener {
-    public final static int NUM_PREGUNTAS = 4;
+    public final static int NUM_PREGUNTAS = 10;
+    private final static String COLOR_BOTONES = "#845208";
 
     private int puntuacion;
     private Utilidad mUtilidad;
@@ -110,21 +111,24 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         this.opcion4.setText(respuestas.get(3));
 
         switch (this.pregunta.getTipo()) {
+            case 1:
+                this.imagen.setVisibility(View.GONE);
+                this.imagen.setBackgroundResource(0);
+
+                this.botonesAudio.setVisibility(View.GONE);
+
+                this.cambiaTamTexto(20);
+                this.cambiaColor();
+
+                break;
             case 2:
                 this.imagen.setVisibility(View.VISIBLE);
                 this.imagen.setBackgroundResource(getResources().getIdentifier(this.pregunta.getImagen(), "drawable", getPackageName()));
 
                 this.botonesAudio.setVisibility(View.GONE);
 
-                this.opcion1.setTextSize(20);
-                this.opcion2.setTextSize(20);
-                this.opcion3.setTextSize(20);
-                this.opcion4.setTextSize(20);
-
-                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
+                this.cambiaTamTexto(20);
+                this.cambiaColor();
 
                 break;
             case 3:
@@ -133,55 +137,35 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
                 this.botonesAudio.setVisibility(View.GONE);
 
-                this.opcion1.setTextSize(0);
-                this.opcion2.setTextSize(0);
-                this.opcion3.setTextSize(0);
-                this.opcion4.setTextSize(0);
+                this.cambiaTamTexto(0);
 
                 this.opcion1.setBackgroundResource(getResources().getIdentifier(respuestas.get(0), "drawable", getPackageName()));
                 this.opcion2.setBackgroundResource(getResources().getIdentifier(respuestas.get(1), "drawable", getPackageName()));
                 this.opcion3.setBackgroundResource(getResources().getIdentifier(respuestas.get(2), "drawable", getPackageName()));
                 this.opcion4.setBackgroundResource(getResources().getIdentifier(respuestas.get(3), "drawable", getPackageName()));
+
                 break;
             case 4:
                 this.imagen.setVisibility(View.GONE);
                 this.imagen.setBackgroundResource(0);
 
                 this.botonesAudio.setVisibility(View.VISIBLE);
-
                 this.sonidoPregunta = MediaPlayer.create(this, Uri.parse("android.resource://com.germaaan.seriator/raw/" + this.pregunta.getSonido()));
 
-                this.opcion1.setTextSize(20);
-                this.opcion2.setTextSize(20);
-                this.opcion3.setTextSize(20);
-                this.opcion4.setTextSize(20);
+                this.cambiaTamTexto(20);
+                this.cambiaColor();
 
-                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
                 break;
-            default:
-                this.imagen.setVisibility(View.GONE);
-                this.imagen.setBackgroundResource(0);
-
-                this.botonesAudio.setVisibility(View.GONE);
-
-                this.opcion1.setTextSize(20);
-                this.opcion2.setTextSize(20);
-                this.opcion3.setTextSize(20);
-                this.opcion4.setTextSize(20);
-
-                this.opcion1.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion2.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion3.setBackgroundColor(Color.parseColor("#845208"));
-                this.opcion4.setBackgroundColor(Color.parseColor("#845208"));
         }
     }
 
     @Override
     public void onClick(View view) {
         Button seleccionado = (Button) view;
+
+        if (this.sonidoPregunta != null) {
+            this.pause(view);
+        }
 
         if (seleccionado.getText().toString().equals(this.pregunta.getRespuesta())) {
             this.puntuacion++;
@@ -229,6 +213,20 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
     public void pause(View view) {
         this.sonidoPregunta.pause();
+    }
+
+    public void cambiaColor() {
+        this.opcion1.setBackgroundColor(Color.parseColor(COLOR_BOTONES));
+        this.opcion2.setBackgroundColor(Color.parseColor(COLOR_BOTONES));
+        this.opcion3.setBackgroundColor(Color.parseColor(COLOR_BOTONES));
+        this.opcion4.setBackgroundColor(Color.parseColor(COLOR_BOTONES));
+    }
+
+    public void cambiaTamTexto(int tam) {
+        this.opcion1.setTextSize(tam);
+        this.opcion2.setTextSize(tam);
+        this.opcion3.setTextSize(tam);
+        this.opcion4.setTextSize(tam);
     }
 
 }

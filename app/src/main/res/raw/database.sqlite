@@ -25,13 +25,61 @@ INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`
 VALUES("Si no sabes que enfermedad tiene seguramente sea...", "Lupus", "Gripe", "Sarampión", "Botulismo", 1);
 
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
-VALUES("¿Cuál de estos peces aparece en Los Simpsons?", "blinky", "nemo", "pez_1", "pez_2", 3);
+VALUES("¿Con quién no debes dar nunca un paseo por la bahía?", "Dexter Morgan", "Rick Grimes", "Emmett Brown", "Saul Goodman", 1);
 
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
-VALUES("¿Con quién no debes dar nunca un paseo por la bahía?", "Dexter Morgan", "Rick Grimes", "Emmett Brown", "Saul Goodman", 1);
+VALUES("¿Quién escribió Dios nos odia a todos?", "Hank Moody", "Frasier Crane", "Albert Wesker", "Cloud Strife", 1);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("Esa cabina de la policia...", "Es más grande por dentro", "Es más pequeña de lo que parece", "Tiene un teléfono", "Está complementa vacía", 1);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("¿Cuál es la herramienta más útil en el universo?", "Destornillador sónico", "Abrelatas eléctrico", "Martillo hidráulico", "Está complementa vacía", 1);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("Tienes que levantarte...", "Estás en mi sitio", "No se ve bien la TV", "Hace viento", "Meh", 1);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("¿Quién nos dirá lo que tenemos que hacer?", "La isla", "La caja", "El espantapájaros", "Kodos", 1);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("Cuando estés desesperado...", "Mejor llama a Saul", "Mira el cielo azúl", "Date prisa", "Todas tus bases nos pertenecerán", 1);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("Tendrá todo el dinero del mundo, pero jamás podrá comprar...", "Un dinosaurio", "Un cometa", "Un unicornio", "Una máquina del tiempo", 1);
 
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `imagen`, `tipo`)
 VALUES("¿A qué serie pertenece esta isla?", "Perdidos", "Breaking Bad", "Doctor Who", "The Walking Dead", "lost", 2);
 
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `imagen`, `tipo`)
+VALUES("¿Quién es?", "Señor Sombrero", "Señor Burns", "Sombrerero Loco", "Tipo de incógnito", "sombrero", 2);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `imagen`, `tipo`)
+VALUES("¿Cómo se llama?", "TARDIS", "ISSPRO", "VERSUS", "TERRA", "tardis", 2);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `imagen`, `tipo`)
+VALUES("¿A qué serie pertenece?", "Breaking Bad", "Los Simpsons", "House", "Sobrenatural", "cristal_azul", 2);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `imagen`, `tipo`)
+VALUES("Nombre de la banda", "SAMCRO", "Satanases del Infierno", "QWERTY", "Los Quebrantahuesos", "samcro", 2);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("¿Cuál de estos peces aparece en Los Simpsons?", "blinky", "nemo", "pez", "piranha", 3);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("No esperes contar con mi", "escudo", "espada", "arco", "hacha", 3);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `tipo`)
+VALUES("Vamos a montar una base secreta en una isla.", "dharma", "umbrella", "shinra", "starbucks", 3);
+
 INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `sonido`, `tipo`)
 VALUES("¿Quién se ha dado cuenta de que es lento?", "Homer Simpson", "Fry", "Bender", "Peter Griffin", "homer", 4);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `sonido`, `tipo`)
+VALUES("Cuidado con ...", "Los velociraptores", "La noche", "El Hombre del Saco", "El mayordomo", "jurassic_park", 4);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `sonido`, `tipo`)
+VALUES("¿A dónde vamos?", "A cualquier momento en el tiempo", "Al fin del mundo", "A pasear al perro", "Al fondo del mar", "tardis", 4);
+
+INSERT INTO `preguntas` (`pregunta`, `respuestaCorrecta`, `respuestaIncorrecta1`, `respuestaIncorrecta2`, `respuestaIncorrecta3`, `sonido`, `tipo`)
+VALUES("Super...", "Saiyan", "Saibaman", "Australopithecus", "Policia", "saiyan", 4);
