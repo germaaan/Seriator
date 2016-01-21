@@ -10,8 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Despedida">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/layoutDespedida"
+    <LinearLayout
+        android:id="@+id/layout_despedida"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
@@ -20,7 +20,7 @@
         android:weightSum="1">
 
         <LinearLayout
-            android:id="@+id/layoutCabecera"
+            android:id="@+id/layout_cabecera"
             android:layout_width="fill_parent"
             android:layout_height="143dp"
             android:layout_marginTop="10dp"
@@ -35,7 +35,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layoutTexto"
+            android:id="@+id/layout_texto"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -43,7 +43,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textoDespedida"
+                android:id="@+id/texto_despedida"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -54,7 +54,7 @@
         </LinearLayout>
 
         <GridLayout
-            android:id="@+id/layoutBotones"
+            android:id="@+id/layout_botones"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"

@@ -59,7 +59,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
         this.opcion3 = (Button) this.findViewById(R.id.boton_opcion_3);
         this.opcion4 = (Button) this.findViewById(R.id.boton_opcion_4);
 
-        this.botonesAudio = (LinearLayout) findViewById(R.id.layoutAudio);
+        this.botonesAudio = (LinearLayout) findViewById(R.id.layout_audio);
 
         this.manejadorBaseDatos = new DBPref(this);
 

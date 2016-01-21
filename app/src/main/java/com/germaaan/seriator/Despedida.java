@@ -24,7 +24,7 @@ public class Despedida extends Activity implements View.OnClickListener {
         this.botonVolver = (Button) this.findViewById(R.id.boton_volver);
 
         this.mUtilidad = (Utilidad) getApplicationContext();
-        this.textoDespedida = (TextView) this.findViewById(R.id.textoDespedida);
+        this.textoDespedida = (TextView) this.findViewById(R.id.texto_despedida);
         this.textoDespedida.setText("A ver, a ver... Tú resultado final es " + this.mUtilidad.getPuntuacion() +
                 ". \n\nVaya, ¿crees que podrías hacerlo mejor? Aquí te espero. ¡Hasta la próxima!");
 
