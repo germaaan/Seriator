@@ -3,6 +3,7 @@ package com.germaaan.seriator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -13,16 +14,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Stack;
 
 public class ActividadPrincipal extends Activity implements View.OnClickListener {
-    private static int NUM_PREGUNTAS = 4;
+    public final static int NUM_PREGUNTAS = 4;
 
     private int puntuacion;
+    private Utilidad mUtilidad;
 
     private DBPref manejadorBaseDatos;
 
@@ -38,18 +39,16 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
     private LinearLayout botonesAudio;
 
-    private MediaPlayer sonido;
+    private MediaPlayer sonidoPregunta;
     private MediaPlayer sonidoAcierto;
     private MediaPlayer sonidoError;
-    private MediaPlayer sonidoGanador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actividad_principal);
 
-
-        // Crear un método void initializeViews(); con todas estas sentencias
+        this.mUtilidad = (Utilidad) this.getApplicationContext();
 
         this.puntuacion = 0;
 
@@ -66,12 +65,10 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
         this.sonidoAcierto = MediaPlayer.create(this, R.raw.sonido_acierto);
         this.sonidoError = MediaPlayer.create(this, R.raw.sonido_error);
-        this.sonidoGanador = MediaPlayer.create(this, R.raw.sonido_ganador);
 
         Cursor preguntas = this.manejadorBaseDatos.getPreguntas(DBPref.Categoria.SERIES, DBPref.Dificultad.FACIL, ActividadPrincipal.NUM_PREGUNTAS);
 
         if (preguntas.moveToFirst()) {
-
             do {
                 String pregunta = preguntas.getString(preguntas.getColumnIndex("pregunta"));
                 int tipo = preguntas.getInt(preguntas.getColumnIndex("tipo"));
@@ -151,7 +148,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
 
                 this.botonesAudio.setVisibility(View.VISIBLE);
 
-                this.sonido = MediaPlayer.create(this, Uri.parse("android.resource://com.germaaan.seriator/raw/" + this.pregunta.getSonido()));
+                this.sonidoPregunta = MediaPlayer.create(this, Uri.parse("android.resource://com.germaaan.seriator/raw/" + this.pregunta.getSonido()));
 
                 this.opcion1.setTextSize(20);
                 this.opcion2.setTextSize(20);
@@ -193,10 +190,8 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                 this.sonidoAcierto.start();
                 this.setPregunta((Pregunta) this.listaPreguntas.pop());
             } else {
-                this.sonidoGanador.start();
-                // En vez de has ganado pasa a la actividad Despedida
-                Toast.makeText(this, "HAS GANADO!", Toast.LENGTH_LONG).show();
-                this.finish();
+                this.mUtilidad.setPuntuacion(this.puntuacion);
+                this.startActivity(new Intent(ActividadPrincipal.this, Despedida.class));
             }
         } else {
             this.sonidoError.start();
@@ -213,6 +208,7 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
                     .setNegativeButton("Reiniciar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
+                            mUtilidad.setPuntuacion(puntuacion);
                             finish();
                         }
                     })
@@ -221,11 +217,11 @@ public class ActividadPrincipal extends Activity implements View.OnClickListener
     }
 
     public void play(View view) {
-        this.sonido.start();
+        this.sonidoPregunta.start();
     }
 
     public void pause(View view) {
-        this.sonido.pause();
+        this.sonidoPregunta.pause();
     }
 
 }
